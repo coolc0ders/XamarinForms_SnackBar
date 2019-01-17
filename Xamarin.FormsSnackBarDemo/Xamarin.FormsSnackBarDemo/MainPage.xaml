@@ -5,8 +5,19 @@
              x:Class="Xamarin.FormsSnackBarDemo.MainPage">
 
     <ContentPage.Content>
-        <Grid >
-            
+        <Grid>
+            <Button Text="Click Me" Clicked="Button_Clicked"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"/>
+
+            <local:SnackBar  x:Name="SnackB" HeightRequest="50" FontSize="{OnPlatform iOS=12, Android=13, UWP=15}" 
+                             BackgroundColor="#323232" 
+                             TextColor="White"
+                             IsOpen="False"
+                             VerticalOptions="End"
+                             Message="I'm a snack bar... I love showing my self."
+                             ButtonTextColor="Orange"
+                             CloseButtonText="Exit"/>
         </Grid>
     </ContentPage.Content>
 

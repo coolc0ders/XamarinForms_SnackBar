@@ -13,5 +13,11 @@ namespace Xamarin.FormsSnackBarDemo
         {
             InitializeComponent();
         }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            SnackB.Message = "I'm a snack bar... I love showing my self.";
+            SnackB.IsOpen = !SnackB.IsOpen;
+        }
     }
 }
