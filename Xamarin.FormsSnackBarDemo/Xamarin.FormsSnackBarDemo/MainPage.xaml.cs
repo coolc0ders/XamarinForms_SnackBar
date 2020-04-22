@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace Xamarin.FormsSnackBarDemo
 {
@@ -16,8 +14,14 @@ namespace Xamarin.FormsSnackBarDemo
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-            SnackB.Message = "I'm a snack bar... I love showing my self.";
             SnackB.IsOpen = !SnackB.IsOpen;
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            var pageSafeArea = On<iOS>().SafeAreaInsets();
+            SnackB.Padding = new Thickness(0, 0, 0, pageSafeArea.Bottom);
         }
     }
 }

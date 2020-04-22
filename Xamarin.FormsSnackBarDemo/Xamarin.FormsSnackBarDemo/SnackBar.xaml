@@ -18,7 +18,18 @@
                         FontSize="{TemplateBinding FontSisze}"
                         TextColor="{TemplateBinding ButtonTextColor}"
                         BackgroundColor="{TemplateBinding CloseButtonBackGroundColor}"
-                        VerticalOptions="Center" Text="{TemplateBinding CloseButtonText}"/>
+                        VerticalOptions="Center" Text="{TemplateBinding CloseButtonText}">
+                    <Button.Triggers>
+                        <Trigger TargetType="Button" Property="Text" Value="">
+                            <Setter Property="IsVisible" Value="False" />
+                            <Setter Property="IsEnabled" Value="False" />
+                        </Trigger>
+                        <Trigger TargetType="Button" Property="Text" Value="{x:Null}">
+                            <Setter Property="IsVisible" Value="False" />
+                            <Setter Property="IsEnabled" Value="False" />
+                        </Trigger>
+                    </Button.Triggers>
+                </Button>
             </Grid>
         </ControlTemplate>
     </TemplatedView.ControlTemplate>

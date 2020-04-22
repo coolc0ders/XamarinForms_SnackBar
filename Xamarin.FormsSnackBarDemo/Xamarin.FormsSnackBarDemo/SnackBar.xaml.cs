@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Xamarin.FormsSnackBarDemo
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class SnackBar : TemplatedView
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class SnackBar : TemplatedView
     {
         public static readonly BindableProperty ButtonTextColorProperty = BindableProperty.Create("ButtonTextColor", typeof(Color), typeof(SnackBar), default(Color));
         public Color ButtonTextColor
@@ -93,12 +89,12 @@ namespace Xamarin.FormsSnackBarDemo
             set { SetValue(FontFamilyProperty, value); }
         }
 
-        public SnackBar ()
-		{
+        public SnackBar()
+        {
             IsVisible = false;
             AnimationDuration = 150;
-			InitializeComponent ();
-		}
+            InitializeComponent();
+        }
 
         private void CloseButton_Clicked(object sender, EventArgs e)
         {
@@ -107,15 +103,13 @@ namespace Xamarin.FormsSnackBarDemo
 
         public async void Close()
         {
-            await this.TranslateTo(0, 50, AnimationDuration);
-            Message = string.Empty;
+            await this.TranslateTo(0, Height, AnimationDuration);
             IsOpen = IsVisible = false;
         }
 
         public async void Open(string message)
         {
             IsVisible = true;
-            Message = message;
             await this.TranslateTo(0, 0, AnimationDuration);
         }
     }
